@@ -6,16 +6,18 @@ public class Tiro {
 	private double angulo;
 	
 	public Tiro(double distancia, double angulo) {
-		super();
-		this.distancia = distancia;
 		this.angulo = angulo;
+		if(this.angulo>-30 && this.angulo<30) {
+			this.distancia=distancia;
+		}else {
+			this.distancia=distancia-distancia*0.2;
+		}
 	}
+	
 	
 	public boolean compiteTiro(){
 		return this.angulo >= -90.00 && this.angulo <= 90.00;
 	}
-	
-	
 
 	public double getDistancia() {
 		return distancia;

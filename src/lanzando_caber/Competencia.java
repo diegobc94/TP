@@ -1,11 +1,8 @@
 package lanzando_caber;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Scanner;
 
 public class Competencia {
 	
@@ -28,7 +25,7 @@ public class Competencia {
 		listaCompetidoresDistancia.sort(new Comparator<Competidor>() {
 			@Override
 			public int compare(Competidor o1, Competidor o2) {
-				return (int) (o1.calcularDistancia()-o2.calcularDistancia());
+				return o1.calcularDistancia() > o2.calcularDistancia() ? -1 :  1;
 			}
 		});
 		for(int i=0; i<listaCompetidoresDistancia.size() && i<3; i++){
@@ -56,10 +53,6 @@ public class Competencia {
 		}
 		return podioConsistencia;
 	}
-	
-	@Override
-	public String toString() {
-		return "Competencia [listaCompetidores=" + listaCompetidores + "]";
-	}
+
 	
 }

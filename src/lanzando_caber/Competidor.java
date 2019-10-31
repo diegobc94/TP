@@ -7,8 +7,12 @@ public class Competidor {
 	
 	private List<Tiro> listaDeTiros = new ArrayList<Tiro>(3);
 	private int nroCompetidor;
-	private double consistencia;
-	private double distancia;
+	private static int cantCompetidores=0;
+	
+	public Competidor() {
+		this.nroCompetidor=++cantCompetidores;
+	}
+	
 	
 	public int getNroCompetidor() {
 		return nroCompetidor;
@@ -45,7 +49,6 @@ public class Competidor {
 		double resta1 = listaDeTiros.get(0).getAngulo()-listaDeTiros.get(1).getAngulo();
 		double resta2 = listaDeTiros.get(0).getAngulo()-listaDeTiros.get(2).getAngulo();
 		double resta3 = listaDeTiros.get(1).getAngulo()-listaDeTiros.get(2).getAngulo();
-		this.consistencia = Math.abs(resta1)+Math.abs(resta2)+Math.abs(resta3);
 		return Math.abs(resta1)+Math.abs(resta2)+Math.abs(resta3);
 	}
 	

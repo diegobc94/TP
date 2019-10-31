@@ -4,28 +4,30 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Lectora {
-	List<Competidor> listaCompetidores;
-	Scanner sc;
+	private List<Competidor> listaCompetidores;
+	private static Scanner sc;
 	
 	public Lectora(String path){
 		File file = new File(path);
 		try {
-			this.sc= new Scanner(file);
+			Lectora.sc=new Scanner(file);
+			sc.useLocale(Locale.ENGLISH);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 	
-	public Competencia obtenerCompetencia(String path){
-		int cantCompetidores = this.sc.nextInt();
+	public Competencia obtenerCompetencia(){
+		int cantCompetidores = sc.nextInt();
+		Competidor competidor;
 		listaCompetidores = new ArrayList<Competidor>(cantCompetidores);
 		for(int i=0; i<cantCompetidores; i++){
-			Competidor competidor = new Competidor();
-			competidor.setNroCompetidor(i+1);		
+			competidor = new Competidor();
 			competidor.realizarTiro(sc.nextDouble(), sc.nextDouble());
 			competidor.realizarTiro(sc.nextDouble(), sc.nextDouble());
 			competidor.realizarTiro(sc.nextDouble(), sc.nextDouble());
